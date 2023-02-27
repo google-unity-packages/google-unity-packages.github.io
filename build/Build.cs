@@ -11,13 +11,18 @@ using System.Threading.Tasks;
 using ICSharpCode.SharpZipLib.Tar;
 using Newtonsoft.Json.Linq;
 using Nuke.Common;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.IO;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.TextTasks;
 
 partial class Build : NukeBuild
 {
-    public static int Main() => Execute<Build>(x => x.GenerateSchema);
+    static GitHubActions GitHubActions => GitHubActions.Instance;
+
+    static AbsolutePath SchemaRoot => RootDirectory / "schema";
+
+    public static int Main() => Execute<Build>(x => x.GenerateRegistry);
 
     Target GenerateSchema => _ => _
         .Executes(GenerateSchemaAsync);
@@ -65,12 +70,11 @@ partial class Build : NukeBuild
 
     static async Task UpdatePackageSchema(string url, CancellationToken ct)
     {
-        var root = RootDirectory / "schema";
         var fileName = Path.GetFileNameWithoutExtension(url);
         var semverRegex = new Regex("(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)");
         var version = semverRegex.Match(fileName).Value;
         var packageName = fileName.Replace($"-{version}", "");
-        var packagePath = root / packageName / version;
+        var packagePath = SchemaRoot / packageName / version;
         var manifestPath = packagePath / "package.json";
         var distPath = packagePath / "dist.json";
         if (manifestPath.Exists() && distPath.Exists())
@@ -94,7 +98,7 @@ partial class Build : NukeBuild
         await gzip.CopyToAsync(unzippedStream, ct);
         unzippedStream.Seek(0, SeekOrigin.Begin);
 
-        await using var tarInputStream = new TarInputStream(unzippedStream);
+        await using var tarInputStream = new TarInputStream(unzippedStream, Encoding.UTF8);
         var foundPackageJson = false;
         while (tarInputStream.GetNextEntry() is { } entry)
         {

@@ -1,0 +1,30 @@
+name: Generate Registry
+
+on: [push]
+
+jobs:
+  ubuntu-latest:
+    name: ubuntu-latest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Cache .nuke/temp, ~/.nuget/packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            .nuke/temp
+            ~/.nuget/packages
+          key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj') }}
+
+      - name: Run './build.cmd GenerateRegistry'
+        run: ./build.cmd GenerateRegistry
+
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          git-config-name: razenbot
+          git-config-email: razenpok.bot@gmail.com
+          branch: gh-pages
+          folder: dist
+          single-commit: true

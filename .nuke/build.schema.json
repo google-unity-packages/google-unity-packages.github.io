@@ -64,6 +64,7 @@
           "items": {
             "type": "string",
             "enum": [
+              "GenerateRegistry",
               "GenerateSchema"
             ]
           }
@@ -74,6 +75,7 @@
           "items": {
             "type": "string",
             "enum": [
+              "GenerateRegistry",
               "GenerateSchema"
             ]
           }
