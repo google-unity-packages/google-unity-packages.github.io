@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "com.google.external-dependency-manager": "1.2.153"
+  }, 
+  "author": {
+    "name": "Google LLC", 
+    "url": "https://firebase.google.com/docs/unity/setup"
+  }, 
+  "description": "Firebase App is the core library every Firebase package depends on.", 
+  "keywords": [
+    "Google", 
+    "Firebase", 
+    "FirebaseApp", 
+    "App"
+  ], 
+  "displayName": "Firebase App (Core)", 
+  "name": "com.google.firebase.app", 
+  "unity": "2017.1", 
+  "version": "6.14.0"
+}

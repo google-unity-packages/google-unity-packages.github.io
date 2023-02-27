@@ -1,0 +1,21 @@
+{
+  "unity": "2017.1", 
+  "version": "7.0.2", 
+  "dependencies": {
+    "com.google.firebase.app": "7.0.2"
+  }, 
+  "name": "com.google.firebase.instance-id", 
+  "keywords": [
+    "Google", 
+    "Firebase", 
+    "InstanceId", 
+    "vh-name:FirebaseInstanceId", 
+    "vh-name:Firebase Instance ID"
+  ], 
+  "description": "You can use Instance ID to test Firebase A/B Testing or provide a unique identifier for each app instance and a mechanism to authenticate and authorize actions like sending a message via Cloud Messaging.", 
+  "displayName": "Firebase Instance ID", 
+  "author": {
+    "name": "Google LLC", 
+    "url": "https://firebase.google.com/docs/reference/unity/namespace/firebase/instance-id"
+  }
+}

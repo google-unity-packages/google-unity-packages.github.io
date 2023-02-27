@@ -1,0 +1,23 @@
+{
+  "description": "Customize your game on the fly.\n\nRemote Config lets you dynamically change the behavior and appearance of your game right from the Firebase console so you can deliver personalized experiences to players - without waiting for app store approval.", 
+  "version": "7.0.1", 
+  "displayName": "Firebase Remote Config", 
+  "dependencies": {
+    "com.google.firebase.app": "7.0.1"
+  }, 
+  "name": "com.google.firebase.remote-config", 
+  "keywords": [
+    "Google", 
+    "Firebase", 
+    "Remote", 
+    "Config", 
+    "Remote Config", 
+    "vh-name:FirebaseRemoteConfig", 
+    "vh-name:Firebase Remote Config"
+  ], 
+  "unity": "2017.1", 
+  "author": {
+    "name": "Google LLC", 
+    "url": "https://firebase.google.com/docs/remote-config/use-config-unity"
+  }
+}

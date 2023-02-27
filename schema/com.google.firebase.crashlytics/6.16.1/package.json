@@ -1,0 +1,22 @@
+{
+  "displayName": "Firebase Crashlytics", 
+  "name": "com.google.firebase.crashlytics", 
+  "unity": "2017.1", 
+  "author": {
+    "name": "Google LLC", 
+    "url": "https://firebase.google.com/docs/crashlytics/unity/start"
+  }, 
+  "keywords": [
+    "Google", 
+    "Firebase", 
+    "Crashlytics", 
+    "Fabric", 
+    "vh-name:FirebaseCrashlytics", 
+    "vh-name:Firebase Crashlytics"
+  ], 
+  "description": "Prioritize and fix stability issues faster.\n\nFirebase Crashlytics helps you track, prioritize, and fix stability issues that erode game quality, in realtime. Spend less time triaging and troubleshooting crashes and more time building game content and features that delight players.\n\nCrashlytics also sends realtime alerts for new issues, regressed issues, and burgeoning issues that might require immediate attention to ensure you never miss a critical crash no matter where you are.", 
+  "dependencies": {
+    "com.google.firebase.app": "6.16.1"
+  }, 
+  "version": "6.16.1"
+}
