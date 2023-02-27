@@ -16,18 +16,45 @@ partial class Build
 
     void ExecuteGenerateRegistry()
     {
-        SchemaRoot.GlobDirectories("*").ForEach(GeneratePackageDirectory);
+        var packages = new List<AbsolutePath>();
+        foreach (var packagePath in SchemaRoot.GlobDirectories("*"))
+        {
+            var latest = GeneratePackageDirectory(packagePath);
+            packages.Add(latest);
+        }
+
+        dynamic manifest = new JObject();
+        manifest._updated = 99999;
+        foreach (var path in packages)
+        {
+            dynamic package = JObject.Parse(ReadAllText(path / "package.json"));
+            package["dist-tags"] = new JObject();
+            package["dist-tags"].latest = package.version;
+            package.maintainers = new JArray();
+            package.readmeFilename = "README.md";
+            package.time = new JObject();
+            package.time.modified = DateTime.UtcNow.ToString("O");
+            package.versions = new JObject();
+            package.versions[package.version.ToString()] = "latest";
+            package.Remove("version");
+            package.Remove("unity");
+            package.Remove("dependencies");
+            manifest[package.name.ToString()] = package;
+        }
+
+        var htmlPath = DistPath / "-" / "all.html";
+        WriteAllText(htmlPath, manifest.ToString());
     }
 
-    void GeneratePackageDirectory(AbsolutePath packagePath)
+    static AbsolutePath GeneratePackageDirectory(AbsolutePath packagePath)
     {
         var packageName = packagePath.Name;
 
         var versions = new List<(Version version, JObject package)>();
         foreach (var versionPath in packagePath.GlobDirectories("*"))
         {
-            var version = GeneratePackageVersion(versionPath);
-            versions.Add(version);
+            var package = GeneratePackageVersion(versionPath);
+            versions.Add((Version.Parse(versionPath.Name), package));
         }
 
         versions = versions
@@ -62,9 +89,11 @@ partial class Build
 
         var htmlPath = DistPath / packageName / "index.html";
         WriteAllText(htmlPath, manifest.ToString());
+
+        return packagePath / versions.Last().version.ToString();
     }
 
-    (Version version, JObject package) GeneratePackageVersion(AbsolutePath versionPath)
+    static JObject GeneratePackageVersion(AbsolutePath versionPath)
     {
         dynamic dist = JObject.Parse(ReadAllText(versionPath / "dist.json"));
         dynamic package = JObject.Parse(ReadAllText(versionPath / "package.json"));
@@ -84,6 +113,6 @@ partial class Build
         var htmlPath = DistPath / packageName / version + ".html";
         WriteAllText(htmlPath, package.ToString());
 
-        return (Version.Parse(version), package);
+        return package;
     }
 }
