@@ -4,7 +4,7 @@ using System.Linq;
 using Newtonsoft.Json.Linq;
 using Nuke.Common;
 using Nuke.Common.IO;
-using Nuke.Common.Utilities.Collections;
+using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.TextTasks;
 
 partial class Build
@@ -44,6 +44,8 @@ partial class Build
 
         var htmlPath = DistPath / "-" / "all.html";
         WriteAllText(htmlPath, manifest.ToString());
+
+        CopyFile(RootDirectory / "index.html", DistPath / "index.html");
     }
 
     static AbsolutePath GeneratePackageDirectory(AbsolutePath packagePath)
