@@ -1,6 +1,13 @@
 name: Generate Registry
 
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+  workflow_run:
+    workflows: [Generate Schema]
+    types: [completed]    
 
 jobs:
   ubuntu-latest:
