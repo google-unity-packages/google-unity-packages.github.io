@@ -102,7 +102,7 @@ partial class Build : NukeBuild
         var foundPackageJson = false;
         while (tarInputStream.GetNextEntry() is { } entry)
         {
-            if (entry.Name != "package/package.json")
+            if (entry.Name != "package/package.json" && entry.Name != "package.json")
             {
                 continue;
             }
