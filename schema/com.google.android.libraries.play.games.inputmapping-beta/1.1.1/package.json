@@ -1,0 +1,15 @@
+{
+  "name": "com.google.android.libraries.play.games.inputmapping",
+  "version": "1.1.1-beta",
+  "displayName": "Input Mapping SDK",
+  "description": "Input SDK plugin for Google Play Games for PC",
+  "dependencies": {
+    "com.google.external-dependency-manager": "1.2.172",
+    "com.google.librarywrapper.java": "0.2.1",
+    "com.google.librarywrapper.openjdk8": "0.2.3"
+  },
+  "unity": "2018.1",
+  "author": {
+    "name": "Google LLC"
+  }
+}
