@@ -1,0 +1,22 @@
+{
+  "name": "com.google.firebase.functions",
+  "version": "13.6.0",
+  "displayName": "Cloud Functions for Firebase",
+  "keywords": [
+    "Google",
+    "Firebase",
+    "Functions",
+    "Cloud",
+    "vh-name:FirebaseFunctions",
+    "vh-name:Cloud Functions for Firebase"
+  ],
+  "author": {
+    "name": "Google LLC",
+    "url": "https://firebase.google.com/docs/functions"
+  },
+  "description": "Run your mobile backend code without managing servers.\n\nWith Cloud Functions, you can write and deploy code to our servers that automatically responds (i.e. executes) to events in your game.\n\nThis way, your game logic is fully insulated from the client so you can be sure its functions are private and can't be reverse engineered. Cloud Functions also automatically scales up computing resources to match the usage patterns of your game.",
+  "unity": "2020.1",
+  "dependencies": {
+    "com.google.firebase.app": "13.6.0"
+  }
+}

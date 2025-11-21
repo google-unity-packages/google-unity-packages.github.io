@@ -1,0 +1,21 @@
+{
+  "name": "com.google.firebase.app-check",
+  "version": "13.6.0",
+  "displayName": "Firebase App Check",
+  "keywords": [
+    "Google",
+    "Firebase",
+    "App Check",
+    "vh-name:FirebaseAppCheck",
+    "vh-name:Firebase App Check"
+  ],
+  "author": {
+    "name": "Google LLC",
+    "url": "https://firebase.google.com/docs/app-check"
+  },
+  "description": "App Check helps protect your API resources from abuse by preventing unauthorized clients from accessing your backend resources. It works with both Firebase services, Google Cloud services, and your own APIs to keep your resources safe.",
+  "unity": "2020.1",
+  "dependencies": {
+    "com.google.firebase.app": "13.6.0"
+  }
+}
