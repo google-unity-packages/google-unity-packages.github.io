@@ -1,0 +1,22 @@
+{
+  "name": "com.google.firebase.firebaseai",
+  "version": "12.10.1",
+  "displayName": "Firebase AI",
+  "keywords": [
+    "Google",
+    "Firebase",
+    "Firebase AI",
+    "Vertex AI",
+    "vh-name:FirebaseAI",
+    "vh-name:Firebase AI"
+  ],
+  "author": {
+    "name": "Google LLC",
+    "url": "https://firebase.google.com/docs/vertex-ai"
+  },
+  "description": "Build AI-powered mobile and web apps and features with the Gemini API using Firebase AI.",
+  "unity": "2020.1",
+  "dependencies": {
+    "com.google.firebase.app": "12.10.1"
+  }
+}
